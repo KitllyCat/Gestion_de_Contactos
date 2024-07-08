@@ -120,6 +120,7 @@ int main(){
 		cin >> opcion;
 		cout << endl;
 		switch(opcion){
+			
 			case 1:
 			agregarContacto(contactos);
 			break;
@@ -149,9 +150,10 @@ int main(){
 			break;
 			
 			default:
-			//error
+			
 			cout << "Opción no válida. Intente nuevamente." << endl;
-			break;			
+			break;	
+					
 		}
 		cout << endl;
 	} while (opcion != 0);
