@@ -73,7 +73,7 @@ void eliminarContacto(vector<contactoEmail>& contactos, const string &nombre){
         cout << "Contacto no encontrado, ingrese correctamente el nombre" << endl;
     }
 }
-
+//mostrar contactos
 void mostrarContacto(const vector<contactoEmail> &contactos){
 	for (const auto &contacto : contactos) {
     cout << "Nombres: " << contacto.nombres << endl;
@@ -83,6 +83,26 @@ void mostrarContacto(const vector<contactoEmail> &contactos){
     cout << "Email: " << contacto.email << endl;
     cout << "Nacionalidad: " << contacto.nacionalidad << endl;
     cout << endl;
+    }
+}
+//mostrar contactos ordenados
+void mostrarContactoOrdenado(vector<contactoEmail>& contactos){
+	if (contactos.empty()) {
+        cout << "No existen  contactos registrados" << endl;
+    } else {
+        sort(contactos.begin(), contactos.end(), [](const contactoEmail& a, const contactoEmail& b) {
+            return a.email < b.email;
+        });
+
+        for (const auto& contacto : contactos) {
+            cout << "Nombres: " << contacto.nombres << endl;
+            cout << "Sexo: " << contacto.sexo << endl;
+            cout << "Edad: " << contacto.edad << endl;
+            cout << "Teléfono: " << contacto.telefono << endl;
+            cout << "Email: " << contacto.email << endl;
+            cout << "Nacionalidad: " << contacto.nacionalidad << endl;
+            cout << "-------------------------" << endl;
+        }
     }
 }
 
@@ -113,19 +133,22 @@ int main(){
 			break;
 		
 			case 3:
-			cout<<"Mostrando todos los contados guardados:"<<endl;
-			mostrarContacto(contactos)
+			cout<<"Mostrando todos los contactos guardados: "<<endl;
+			cout<<endl;
+			mostrarContacto(contactos);
 			break;
 			
-			case 4;
-			//aqui va la funcion mostrarContactoCorreo
+			case 4:
+			cout<<"Mostrando los contactos guardados ordenadenadamente(por correo): "
+			mostrarContactoOrdenado(vector<contactoEmail>& contactos);
+			cout<<endl;
 			break;
 			
-			case 0;
+			case 0:
 			cout<<"Saliendo del programa..."<<endl;
 			break;
 			
-			default;
+			default:
 			//error
 			cout << "Opción no válida. Intente nuevamente." << endl;
 			break;			
