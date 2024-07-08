@@ -72,7 +72,19 @@ void eliminarContacto(vector<contactoEmail>& contactos, const string &nombre){
     } else {
         cout << "Contacto no encontrado, ingrese correctamente el nombre" << endl;
     }
-}	
+}
+
+void mostrarContacto(const vector<contactoEmail> &contactos){
+	for (const auto &contacto : contactos) {
+    cout << "Nombres: " << contacto.nombres << endl;
+    cout << "Sexo: " << contacto.sexo << endl;
+    cout << "Edad: " << contacto.edad << endl;
+    cout << "Telefono: " << contacto.telefono << endl;
+    cout << "Email: " << contacto.email << endl;
+    cout << "Nacionalidad: " << contacto.nacionalidad << endl;
+    cout << endl;
+    }
+}
 
 int main(){
 	int opcion;
@@ -100,8 +112,9 @@ int main(){
             eliminarContacto(contactos, nombre);
 			break;
 		
-			case 3;
-			//aqui va la funcion mostrarContacto
+			case 3:
+			cout<<"Mostrando todos los contados guardados:"<<endl;
+			mostrarContacto(contactos)
 			break;
 			
 			case 4;
