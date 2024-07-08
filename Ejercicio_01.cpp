@@ -53,7 +53,26 @@ void agregarContacto(vector<contactoEmail>& contactos){
     contactos.push_back(nuevoContacto);
 	cout<<"Contacto guardado safisfactoriamente~!"<<endl;
 }
+//eliminar contacto
+void eliminarContacto(vector<contactoEmail>& contactos, const string &nombre){
+    int indice = -1;
+    for (int i = 0; i < contactos.size(); ++i) {
+        if (contactos[i].nombres == nombre) {
+            indice = i;
+            break;
+        }
+    }
 
+    if (indice != -1) {
+        for (int i = indice; i < contactos.size() - 1; ++i) {
+            contactos[i] = contactos[i + 1];
+        }
+        contactos.pop_back();
+        cout << "El contacto ha sido eliminado correctamente" << endl;
+    } else {
+        cout << "Contacto no encontrado, ingrese correctamente el nombre" << endl;
+    }
+}	
 
 int main(){
 	int opcion;
@@ -69,15 +88,16 @@ int main(){
 		cin >> opcion;
 		cout << endl;
 		switch(opcion){
-			case 0;
-			break;
-			
 			case 1:
 			agregarContacto(contactos);
 			break;
 			
 			case 2:
-			//aqui va la funcion eliminarContacto
+            string nombre;
+            cout << "Ingrese el nombre del contacto que desea eliminar: " << endl;
+            cin.ignore();
+            getline(cin, nombre);
+            eliminarContacto(contactos, nombre);
 			break;
 		
 			case 3;
@@ -86,6 +106,10 @@ int main(){
 			
 			case 4;
 			//aqui va la funcion mostrarContactoCorreo
+			break;
+			
+			case 0;
+			cout<<"Saliendo del programa..."<<endl;
 			break;
 			
 			default;
